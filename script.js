@@ -31,6 +31,12 @@ function generatePassword() {
     var includeUppercase = confirm("Do you want to include uppercase characters");
     var includeNumeric = confirm("Do you want to include numbers?");
 
+    // When the user said no to all of the above
+    if(!includeLowercase && !includeNumeric && !includeSpecial && !includeUppercase) {
+      alert("Cmon at least give me something to work on");
+      return "Stop being so picky";
+    }
+
     
   } else {
     // pLength has to be an int
