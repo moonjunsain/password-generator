@@ -17,16 +17,22 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   var passwordForReturn = "";
   var pLength = 0;
-  pLength = prompt("How long do you want your password to be? (Please Enter only positive whole number)");
+  pLength = prompt("How long do you want your password to be? (min: 8, max: 128)");
 
-  // checks if pLength is actually an integer
-  if(Number.isInteger(pLength)){
+  // checks if pLength is actually an integer and within the range
+  if(Number.isInteger(pLength) && pLength <= 128 && pLength >= 8){
     // proceed
+    // confirm for any necessary properties for the password
+    var includeSpecial = confirm("Do you want to include special characters?");
+    var includeLowercase = confirm("Do you want to include lowercase characters?");
+    var includeUppercase = confirm("Do you want to include uppercase characters");
+    var includeNumeric = confirm("Do you want to include numbers?");
+
+    
   } else {
     // pLength has to be an int
     return "Please Enter Proper Value";
   }
-
   
 // Returns password generated
   return passwordForReturn;
