@@ -1,5 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+// a list of variables for later use to create random password
+const lowercases = "abcdefghijklmnopqrstuvwxyz";
+const uppercases = lowercases.toUpperCase;
+const numbers = "1234567890";
+const specials = "~!@#$%^&*()?<>-=_+[]{};':\\|/";
 
 // Write password to the #password input
 function writePassword() {
@@ -35,16 +40,21 @@ function generatePassword() {
     if(!includeLowercase && !includeNumeric && !includeSpecial && !includeUppercase) {
       alert("Cmon at least give me something to work on");
       return "Stop being so picky";
-    }
 
-    
-  } else {
-    // pLength has to be an int
-    console.log("The number is not valid");
-    return "Please Enter Proper Value";
-  }
+      // when the user only wants lower case
+    } else if(includeLowercase && !includeNumeric && !includeSpecial && !includeUppercase){
+      passwordForReturn = createRandomString(pLength, lowercases);
+
+    }else if(!includeLowercase && !includeNumeric && !includeSpecial && !includeUppercase){
+
+    }else {
+      // when pLength does not follow the guideline
+      console.log("The number is not valid");
+      return "Please Enter Proper Value";
+    }
   
-// Returns password generated
+  }
+  // Returns password generated
   return passwordForReturn;
 }
 
