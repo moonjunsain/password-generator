@@ -47,3 +47,16 @@ function generatePassword() {
 // Returns password generated
   return passwordForReturn;
 }
+
+// function for creating a string composed of random characters
+function createRandomString(length, characters){
+  var result = "";
+  // for loop to concatenate random characters to result
+  for(var i = 0; i < length; i++){
+    // using Math.random to obtain random index (no need to add min since our min here is just 0 for index)
+    var randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters.charAt(randomIndex);
+  }
+
+  return result;
+}
