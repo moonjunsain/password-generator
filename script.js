@@ -13,11 +13,21 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+
 function generatePassword() {
   var passwordForReturn = "";
-  var isSpecial = prompt("What is this");
+  var pLength = 0;
+  pLength = prompt("How long do you want your password to be? (Please Enter only positive whole number)");
+
+  // checks if pLength is actually an integer
+  if(Number.isInteger(pLength)){
+    // proceed
+  } else {
+    // pLength has to be an int
+    return "Please Enter Proper Value";
+  }
 
   
-
+// Returns password generated
   return passwordForReturn;
 }
