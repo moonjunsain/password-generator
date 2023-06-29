@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 // a list of variables for later use to create random password
 const lowercases = "abcdefghijklmnopqrstuvwxyz";
-const uppercases = lowercases.toUpperCase;
+const uppercases = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbers = "1234567890";
 const specials = "~!@#$%^&*()?<>-=_+[]{};':\\|/";
 
@@ -33,21 +33,36 @@ function generatePassword() {
     // confirm for any necessary properties for the password
     var includeSpecial = confirm("Do you want to include special characters?");
     var includeLowercase = confirm("Do you want to include lowercase characters?");
-    var includeUppercase = confirm("Do you want to include uppercase characters");
+    var includeUppercase = confirm("Do you want to include uppercase characters?");
     var includeNumeric = confirm("Do you want to include numbers?");
 
     // When the user said no to all of the above
     if(!includeLowercase && !includeNumeric && !includeSpecial && !includeUppercase) {
-      alert("Cmon at least give me something to work on");
+      alert("C'mon at least give me something to work on");
       return "Stop being so picky";
 
-      // when the user only wants lower case
-    } else if(includeLowercase && !includeNumeric && !includeSpecial && !includeUppercase){
+      // when the user wants lower case
+    } else if(includeLowercase){
       passwordForReturn = createRandomString(pLength, lowercases);
 
-    }else if(!includeLowercase && !includeNumeric && !includeSpecial && !includeUppercase){
+      // when the user wants numbers
+    }else if(includeNumeric){
+      passwordForReturn = createRandomString(pLength, numbers);
 
-    }else {
+      // when the user wants specials
+    }else if(includeSpecial){
+      passwordForReturn = createRandomString(pLength, specials);
+
+      // when the user wants uppercases 
+    }else if(includeUppercase){
+      console.log("uppercase selected");
+      passwordForReturn = createRandomString(pLength, uppercases);
+
+    // when the user wants all 4
+    }else if(includeLowercase && includeNumeric && includeSpecial && includeUppercase){
+      passwordForReturn = createRandomString(pLength, lowercases + numbers + specials + uppercases);
+    }
+    else {
       // when pLength does not follow the guideline
       console.log("The number is not valid");
       return "Please Enter Proper Value";
