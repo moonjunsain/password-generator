@@ -23,6 +23,7 @@ function generatePassword() {
   var passwordForReturn = "";
   var pLength = 0;
   pLength = prompt("How long do you want your password to be? (min: 8, max: 128)");
+  // To make it applicable for <= and >=
   pLength = parseInt(pLength);
  
 
@@ -31,44 +32,43 @@ function generatePassword() {
     console.log("The number is valid");
     // proceed
     // confirm for any necessary properties for the password
+    var stringForCharacters = "";
     var includeSpecial = confirm("Do you want to include special characters?");
-    var includeLowercase = confirm("Do you want to include lowercase characters?");
-    var includeUppercase = confirm("Do you want to include uppercase characters?");
-    var includeNumeric = confirm("Do you want to include numbers?");
+    
+    // when the user says ok
+    if(includeSpecial){
+      stringForCharacters += specials
+    }
 
+    var includeLowercase = confirm("Do you want to include lowercase characters?");
+    if(includeLowercase){
+      stringForCharacters += lowercases;
+    }
+
+    var includeUppercase = confirm("Do you want to include uppercase characters?");
+    if(includeUppercase){
+      stringForCharacters += uppercases;
+    }
+
+    var includeNumeric = confirm("Do you want to include numbers?");
+    if(includeNumeric){
+      stringForCharacters += numbers;
+    }
+    
     // When the user said no to all of the above
     if(!includeLowercase && !includeNumeric && !includeSpecial && !includeUppercase) {
       alert("C'mon at least give me something to work on");
       return "Stop being so picky";
-
-      // when the user wants lower case
-    } else if(includeLowercase){
-      passwordForReturn = createRandomString(pLength, lowercases);
-
-      // when the user wants numbers
-    }else if(includeNumeric){
-      passwordForReturn = createRandomString(pLength, numbers);
-
-      // when the user wants specials
-    }else if(includeSpecial){
-      passwordForReturn = createRandomString(pLength, specials);
-
-      // when the user wants uppercases 
-    }else if(includeUppercase){
-      console.log("uppercase selected");
-      passwordForReturn = createRandomString(pLength, uppercases);
-
-    // when the user wants all 4
-    }else if(includeLowercase && includeNumeric && includeSpecial && includeUppercase){
-      passwordForReturn = createRandomString(pLength, lowercases + numbers + specials + uppercases);
     }
-    else {
+  
+  } else {
       // when pLength does not follow the guideline
       console.log("The number is not valid");
       return "Please Enter Proper Value";
-    }
-  
   }
+
+  // calling function to generate a string consists of stringForCharacters(It's been building up)
+  passwordForReturn = createRandomString(pLength, stringForCharacters);
   // Returns password generated
   return passwordForReturn;
 }
