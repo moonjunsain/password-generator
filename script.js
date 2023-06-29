@@ -64,6 +64,7 @@ function generatePassword() {
   } else {
       // when pLength does not follow the guideline
       console.log("The number is not valid");
+      alert("What did I say about the password length tsk tsk");
       return "Please Enter Proper Value";
   }
 
