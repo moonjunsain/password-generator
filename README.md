@@ -40,7 +40,7 @@ Simply follow the prompt box that window provides, and it will generate a passwo
 ## Usage 
 
 Following is the demo of this app.
-The user can use keyboard to type in, also confirm by using keyboard or mouse.
+The user can use keyboard to type in the length, also confirm by using keyboard or mouse.
 
 ![demo](./pwGenerator-demo.gif)
 
